@@ -1,0 +1,54 @@
+<div class="hero">
+  <h1>Welcome to Focus Fighter</h1>
+  <p>Grow your characters by staying focused and completing tasks!</p>
+  
+  <% if user_signed_in? %>
+    <div class="dashboard">
+      <h2>Your Dashboard</h2>
+      
+      <% if @active_character %>
+        <div class="character-card">
+          <h3>Active Character</h3>
+          <p><%= @active_character.name %></p>
+          <p>Level: <%= @active_character.level %></p>
+          <p>Experience: <%= @active_character.experience %></p>
+        </div>
+      <% end %>
+      
+      <div class="focus-sessions">
+        <h3>Today's Focus Sessions</h3>
+        <% if @focus_sessions.any? %>
+          <ul>
+            <% @focus_sessions.each do |session| %>
+              <li>
+                <%= session.duration %> minutes with <%= session.character.name %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No focus sessions today yet.</p>
+        <% end %>
+      </div>
+      
+      <div class="todos">
+        <h3>Upcoming Todos</h3>
+        <% if @todos.any? %>
+          <ul>
+            <% @todos.each do |todo| %>
+              <li>
+                <%= todo.title %> - Due: <%= todo.due_date.strftime("%B %d, %Y") %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No upcoming todos.</p>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="cta-buttons">
+      <%= link_to "Sign Up", new_user_registration_path, class: "button primary" %>
+      <%= link_to "Sign In", new_user_session_path, class: "button secondary" %>
+    </div>
+  <% end %>
+</div>

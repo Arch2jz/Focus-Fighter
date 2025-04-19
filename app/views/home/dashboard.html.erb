@@ -1,0 +1,50 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-8">Welcome, <%= current_user.email %></h1>
+
+  <% if @active_character %>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Your Character</h2>
+      <div class="flex items-center">
+        <div class="w-16 h-16 bg-gray-200 rounded-full mr-4"></div>
+        <div>
+          <p class="text-lg"><%= @active_character.name %></p>
+          <p class="text-gray-600">Level <%= @active_character.level %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold mb-4">Today's Focus Sessions</h2>
+      <% if @focus_sessions.any? %>
+        <ul class="space-y-4">
+          <% @focus_sessions.each do |session| %>
+            <li class="border-b pb-2">
+              <p class="font-medium"><%= session.duration %> minutes</p>
+              <p class="text-gray-600"><%= session.created_at.strftime("%I:%M %p") %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-gray-600">No focus sessions today</p>
+      <% end %>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-semibold mb-4">Upcoming Todos</h2>
+      <% if @todos.any? %>
+        <ul class="space-y-4">
+          <% @todos.each do |todo| %>
+            <li class="border-b pb-2">
+              <p class="font-medium"><%= todo.title %></p>
+              <p class="text-gray-600">Due: <%= todo.due_date.strftime("%B %d, %Y") %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-gray-600">No upcoming todos</p>
+      <% end %>
+    </div>
+  </div>
+</div> 

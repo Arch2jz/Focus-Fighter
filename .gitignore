@@ -32,3 +32,41 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore environment variables
+.env
+
+# Ignore Rails specific files
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore database files
+/db/*.sqlite3
+/db/*.sqlite3-*
+
+# Ignore test coverage
+/coverage/*
+
+# Ignore node modules
+/node_modules
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore Ruby version manager files
+.ruby-version
+.rbenv-vars
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore OS specific files
+.DS_Store
+Thumbs.db
