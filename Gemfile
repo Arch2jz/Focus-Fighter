@@ -23,7 +23,7 @@ gem "omniauth-google-oauth2", "~> 1.1"
 gem "rack-attack"
 
 # Calendar functionality
-gem "simple_calendar", "~> 2.4"
+gem "simple_calendar", "~> 3.1"
 
 # Real-time updates
 gem "redis", "~> 5.0"
